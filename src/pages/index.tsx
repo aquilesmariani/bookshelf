@@ -20,24 +20,24 @@ const BookShelf: React.FC = () => {
 
   const fetchData = async (url: string) => {
     try {
-      setIsLoading(true);
-      const response = await fetch(url);
-      const data = await response.json();
-      setFilteredBooks(data.docs || data.works || []);
+      setIsLoading(true)
+      const response = await fetch(url)
+      const data = await response.json()
+      setFilteredBooks(data.docs || data.works || [])
     } catch (error) {
-      console.error('Error fetching books:', error);
+      console.error('Error fetching books:', error)
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
   }
 
   useEffect(() => {
-    fetchData('https://openlibrary.org/subjects/science.json');
-  }, []);
+    fetchData('https://openlibrary.org/subjects/science.json')
+  }, [])
 
   useEffect(() => {
-    if (searchQuery !== '') fetchData(`https://openlibrary.org/search.json?q=${searchQuery}`);
-  }, [searchQuery]);
+    if (searchQuery !== '') fetchData(`https://openlibrary.org/search.json?q=${searchQuery}`)
+  }, [searchQuery])
 
   const handleSearch = (name: string) => {
     setSearchQuery(name)
