@@ -44,7 +44,7 @@ const BookShelf: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className={styles.pageContainer}>
       <h2 className={styles.title}>Bookshelf</h2>
       <SearchBar onSearch={handleSearch} />
       {
