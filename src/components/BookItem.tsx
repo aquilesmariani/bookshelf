@@ -1,6 +1,7 @@
 import React, { useEffect, useState, FC } from 'react'
 import Image from 'next/image'
 import { findCover, formatData } from '@/utils/formatData'
+import { fetchBookData, fetchAuthorData } from '@/utils/api'
 import { Book } from '@/pages'
 import styles from '@/styles/BookList.module.css'
 
@@ -25,10 +26,8 @@ const BookItem: FC<BookItemProps> = ({ selectedBook }) => {
       const getBookData = async () => {
         setIsLoading(true)
         setSelectedBookData({})
-        const responseBook = await fetch(`https://openlibrary.org${selectedBook}.json`)
-        const bookData = await responseBook.json()
-        const responseAuthor = await fetch(`https://openlibrary.org${bookData.authors[0].author.key}.json`)
-        const authorData = await responseAuthor.json()
+        const bookData = await fetchBookData(selectedBook.replace('/works/', ''))
+        const authorData = await fetchAuthorData(bookData.authors[0].author.key.replace('/authors/', ''))
         setSelectedBookData(formatData({
           bookData,
           author: authorData,
@@ -66,6 +65,3 @@ const BookItem: FC<BookItemProps> = ({ selectedBook }) => {
 };
 
 export default BookItem;
-
-
-
