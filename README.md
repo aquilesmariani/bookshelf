@@ -1,38 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Bookshelf
 
-## Getting Started
+Bookshelf is a web application that allows users to search for books and view their details. It uses the Open Library API to fetch book data and provides a user-friendly interface for browsing and exploring books.
 
-First, run the development server:
+## Installation
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+1. Clone the repository:
+
+   ```shell
+   git clone https://github.com/aquilesmariani/bookshelf.git
+   ```
+2. Navigate to the project directory:
+
+    ```shell
+    cd bookshelf
+    ```
+3. Install dependencies:
+
+    ```shell
+    npm install
+    ```
+4. Start the development server:
+
+    ```shell
+    npm run dev
+    ```
+The website will be accessible at http://localhost:3000.
+
+## Usage
+Upon opening the website, you will see a list of books related to the "Science" subject.
+Use the search bar at the top to search for books by title, author, or any keyword.
+The search results will be displayed dynamically when you click on "Search" button or hitting the "Enter" keyword.
+Click on a book to view its details in a modal window.
+Pagination controls at the bottom allow you to navigate through the search results.
+Enjoy exploring and discovering new books!
+
+## Technologies Used
+- React: v17.0.2
+- Next.js: v11.1.2
+- TypeScript: v5.0.4
+- Jest: v29.5.0
+- React Testing Library: v14.0.0
+- CSS Modules: v3.2.4
+
+## Features that could be implemented in a future:
+- Internationalization (i18n)
+- Global state management (Redux)
+## Folder Structure
+The project follows the following folder structure:
+
+```shell
+├── __tests__/           # Contains functionality, snapshot and components testing
+├── components/          # Contains reusable components
+├── pages/               # Contains Next.js page components
+├── public/              # Static assets and images
+├── styles/              # CSS modules and global styles
+├── utils/               # Utility functions
+├── .gitignore           # Git ignore file
+├── next.config.js       # Next.js configuration file
+├── package.json         # NPM dependencies and scripts
+├── README.md            # Project README
+└── ...                  # Other project files
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Contact Information
+For any inquiries or support, please contact me through any of the following apps:
+- Gmail: aquilesmariani@gmail.com 
+- Linkedin: https://www.linkedin.com/in/aquilesmariani/?locale=en_US
+- GitHub: https://github.com/aquilesmariani
