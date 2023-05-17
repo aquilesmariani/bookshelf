@@ -5,7 +5,7 @@ import styles from '@/styles/Modal.module.css'
 interface ModalProps {
   isOpen: boolean
   onClose: () => void
-  children: ReactNode;
+  children: ReactNode
 }
 
 const Modal: FC<ModalProps> = ({ isOpen, onClose, children }) => {

@@ -5,7 +5,8 @@
   --secondary-color: #A96922;
   --primary-dark-color: #114B47;
   --secondary-dark-color: #1C7262;
-  color: var(--primary-dark-color); 
+  --white: #FFFFFF;
+  color: var(--primary-dark-color);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   min-height: 100vh;
 }

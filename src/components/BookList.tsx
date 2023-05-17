@@ -1,4 +1,4 @@
-import React, { useEffect, useState, ChangeEvent, FormEvent } from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import Modal from './Modal'
 import BookItem from './BookItem'
@@ -31,7 +31,6 @@ const BookList: React.FC<BookListProps> = ({ list }) => {
   const paginate = (pageNumber: number) => {
     setCurrentPage(pageNumber)
   }
-  
 
   return (
     <div className={styles.bookListContainer}>

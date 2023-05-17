@@ -9,12 +9,12 @@ interface BookItemProps {
   selectedBook: string
 }
 
-type SelectedBook = Book & {
+export type SelectedBook = Book & {
   firstPublishYear: string
   description: string
   authorName: string
   authorBio: string
-  cover?: string
+  cover: string | null
 }
 
 const BookItem: FC<BookItemProps> = ({ selectedBook }) => {
@@ -22,23 +22,20 @@ const BookItem: FC<BookItemProps> = ({ selectedBook }) => {
   const [selectedBookData, setSelectedBookData] = useState<Partial<SelectedBook>>({})
 
   useEffect(() => {
-    try {
       const getBookData = async () => {
         setIsLoading(true)
         setSelectedBookData({})
         const bookData = await fetchBookData(selectedBook.replace('/works/', ''))
         const authorData = await fetchAuthorData(bookData.authors[0].author.key.replace('/authors/', ''))
-        setSelectedBookData(formatData({
-          bookData,
-          author: authorData,
-          cover: findCover(bookData.covers, selectedBook, [])
-        }))
+        const bookCover = findCover(bookData.covers, selectedBook, [])
+        const formattedData = formatData(bookData, authorData, bookCover)
+        setSelectedBookData(formattedData)
         setIsLoading(false)
       }
-      selectedBook && getBookData()
-    } catch (error) {
-      console.error('Error fetching books:', error)
-    }
+      selectedBook && getBookData().catch(error => {
+        console.error('Error fetching books:', error)
+        setIsLoading(false)
+      })
   }, [selectedBook])
 
   return (
@@ -49,8 +46,8 @@ const BookItem: FC<BookItemProps> = ({ selectedBook }) => {
           <div className={styles.selectedBookData}>
             {
               selectedBookData.cover ?
-                <img src={selectedBookData.cover} alt="Book Cover" /> :
-                <Image src='/bookCoverPlaceholder.png' alt="No cover image" height={150} width={120} />
+                <img className={styles.selectedBookCover} src={selectedBookData.cover} alt="Book Cover" /> :
+                <Image className={styles.selectedBookCover} src='/bookCoverPlaceholder.png' alt="No cover image" height={150} width={120} />
             }
             <div className={styles.selectedBookDetails}>
               <p>First Publish Year: {selectedBookData.firstPublishYear}</p>
@@ -61,7 +58,7 @@ const BookItem: FC<BookItemProps> = ({ selectedBook }) => {
           </div>
         </div>)}
     </>
-  );
-};
+  )
+}
 
-export default BookItem;
+export default BookItem

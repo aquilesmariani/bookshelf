@@ -1,4 +1,4 @@
-import React, { useEffect, useState, ChangeEvent, FormEvent } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import styles from '@/styles/Home.module.css'
 import SearchBar from '@/components/SearchBar'
@@ -36,17 +36,17 @@ const BookShelf: React.FC = () => {
   }, [])
 
   useEffect(() => {
-    if (searchQuery !== '') fetchData(`https://openlibrary.org/search.json?q=${searchQuery}`)
+    if (searchQuery.length >= 3) {
+      fetchData(`https://openlibrary.org/search.json?q=${searchQuery}`)
+    } else if (searchQuery === '') {
+      fetchData('https://openlibrary.org/subjects/science.json')
+    }
   }, [searchQuery])
-
-  const handleSearch = (name: string) => {
-    setSearchQuery(name)
-  }
 
   return (
     <div className={styles.pageContainer}>
       <h2 className={styles.title}>Bookshelf</h2>
-      <SearchBar onSearch={handleSearch} />
+      <SearchBar onSearch={(name: string) => setSearchQuery(name)} />
       {
         isLoading ? (
           <div className={styles.gifContainer}>

@@ -10,7 +10,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
 
   const handleSearch = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (query.length >= 3) onSearch(query)
+    if (query.length >= 3 || query === '') onSearch(query)
   }
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {

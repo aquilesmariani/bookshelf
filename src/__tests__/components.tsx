@@ -30,7 +30,7 @@ describe('BookList', () => {
     })
 
     render(<BookList list={books} />)
-    
+
     await waitFor(() => {
       expect(screen.getByText('Book 1')).toBeInTheDocument()
       expect(screen.getByText('Book 2')).toBeInTheDocument()
@@ -70,8 +70,8 @@ test('renders BookItem correctly', () => {
     title: 'Test Book',
     authors: [{ name: 'Test Author' }],
     description: 'Test Description',
-  };
+  }
 
-  const { container } = render(<BookItem book={book} />);
-  expect(container.firstChild).toMatchSnapshot();
-});
+  const { container } = render(<BookItem selectedBook={book.key} />)
+  expect(container.firstChild).toMatchSnapshot()
+})
