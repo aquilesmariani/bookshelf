@@ -135,4 +135,11 @@
     max-height: 300px;
   }
 
+  .pagination {
+    position: fixed;
+    bottom: 0;
+    width: calc(100% - 96px);
+    background-color: var(--primary-color);
+  }
+
 }
